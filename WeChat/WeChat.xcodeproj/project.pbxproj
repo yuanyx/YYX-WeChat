@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		593479441C0F10D40079E706 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 593479431C0F10D40079E706 /* Login.storyboard */; };
 		59CAA4291C0EDC6C005CE6C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA4281C0EDC6C005CE6C4 /* main.m */; };
 		59CAA42C1C0EDC6C005CE6C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA42B1C0EDC6C005CE6C4 /* AppDelegate.m */; };
 		59CAA42F1C0EDC6C005CE6C4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA42E1C0EDC6C005CE6C4 /* ViewController.m */; };
@@ -165,10 +166,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		593479431C0F10D40079E706 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		59CAA4241C0EDC6C005CE6C4 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59CAA4281C0EDC6C005CE6C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		59CAA42A1C0EDC6C005CE6C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		59CAA42B1C0EDC6C005CE6C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		59CAA42A1C0EDC6C005CE6C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
+		59CAA42B1C0EDC6C005CE6C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		59CAA42D1C0EDC6C005CE6C4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		59CAA42E1C0EDC6C005CE6C4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		59CAA4311C0EDC6C005CE6C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -479,6 +481,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		593479411C0F102F0079E706 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				593479431C0F10D40079E706 /* Login.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		593479421C0F10530079E706 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				59CAA4301C0EDC6C005CE6C4 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		593479451C0F11050079E706 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				59CAA42A1C0EDC6C005CE6C4 /* AppDelegate.h */,
+				59CAA42B1C0EDC6C005CE6C4 /* AppDelegate.m */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 		59CAA41B1C0EDC6C005CE6C4 = {
 			isa = PBXGroup;
 			children = (
@@ -505,11 +532,8 @@
 			isa = PBXGroup;
 			children = (
 				59CAA45A1C0EDC70005CE6C4 /* Classes */,
-				59CAA42A1C0EDC6C005CE6C4 /* AppDelegate.h */,
-				59CAA42B1C0EDC6C005CE6C4 /* AppDelegate.m */,
 				59CAA42D1C0EDC6C005CE6C4 /* ViewController.h */,
 				59CAA42E1C0EDC6C005CE6C4 /* ViewController.m */,
-				59CAA4301C0EDC6C005CE6C4 /* Main.storyboard */,
 				59CAA4331C0EDC6C005CE6C4 /* Assets.xcassets */,
 				59CAA4351C0EDC6C005CE6C4 /* LaunchScreen.storyboard */,
 				59CAA4381C0EDC6C005CE6C4 /* Info.plist */,
@@ -548,6 +572,9 @@
 		59CAA45A1C0EDC70005CE6C4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				593479451C0F11050079E706 /* Others */,
+				593479421C0F10530079E706 /* Main */,
+				593479411C0F102F0079E706 /* Login */,
 				59CAA45B1C0EDCB0005CE6C4 /* Lib */,
 			);
 			path = Classes;
@@ -1453,6 +1480,7 @@
 			files = (
 				59CAA4911C0EDD24005CE6C4 /* build-libidn.sh in Resources */,
 				59CAA4371C0EDC6C005CE6C4 /* LaunchScreen.storyboard in Resources */,
+				593479441C0F10D40079E706 /* Login.storyboard in Resources */,
 				59CAA4341C0EDC6C005CE6C4 /* Assets.xcassets in Resources */,
 				59CAA48C1C0EDD24005CE6C4 /* README.txt in Resources */,
 				59CAA4321C0EDC6C005CE6C4 /* Main.storyboard in Resources */,
@@ -1649,6 +1677,7 @@
 				59CAA4311C0EDC6C005CE6C4 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		59CAA4351C0EDC6C005CE6C4 /* LaunchScreen.storyboard */ = {
