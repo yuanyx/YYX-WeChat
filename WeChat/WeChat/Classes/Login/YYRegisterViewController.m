@@ -59,7 +59,7 @@
     
     [self.view endEditing:YES];
     //判断用户输入的是否为手机号码
-    if ([self.userField isTelphoneNum]) {
+    if (![self.userField isTelphoneNum]) {
         [MBProgressHUD showError:@"请输入正确的手机号码" toView:self.view];
         return;
     }
@@ -75,9 +75,10 @@
     [MBProgressHUD showMessage:@"正在注册中..." toView:self.view];
 
      __weak typeof(self) selfVc = self; //解决内存泄露问题
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
-    app.registerOperation = YES;
-    [app userRegister:^(resultType type) {
+//    AppDelegate *app = [UIApplication sharedApplication].delegate;
+//    app.registerOperation = YES;
+    [YYXMPPTool sharedYYXMPPTool].registerOperation = YES;
+    [[YYXMPPTool sharedYYXMPPTool] userRegister:^(resultType type) {
         [selfVc handleResultType:type];
     }];
 }

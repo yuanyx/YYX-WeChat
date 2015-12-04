@@ -60,9 +60,11 @@
     if ([destVc isKindOfClass:[YYNavigationController class]]) {
         YYNavigationController *nav = destVc;
         
-        YYRegisterViewController *registerVc = (YYRegisterViewController *)nav.topViewController;
-        //设置代理
-        registerVc.delegate = self;
+        if ([nav.topViewController isKindOfClass:[YYRegisterViewController class]]) {
+            YYRegisterViewController *registerVc = (YYRegisterViewController *)nav.topViewController;
+            //设置代理
+            registerVc.delegate = self;
+        }
     }
 }
 

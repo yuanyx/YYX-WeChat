@@ -35,13 +35,18 @@
     
     //登录前提示用户
     [MBProgressHUD showMessage:@"正在登录中..." toView:self.view];
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
-    app.registerOperation = NO;
+    //AppDelegate *app = [UIApplication sharedApplication].delegate;
+    //app.registerOperation = NO;
+    [YYXMPPTool sharedYYXMPPTool].registerOperation = NO;
     
     __weak typeof(self) selfVc = self; //解决内存泄露问题
-    [app userLogin:^(resultType type) {
+    [[YYXMPPTool sharedYYXMPPTool] userLogin:^(resultType type) {
         [selfVc handleResultType:type];
+
     }];
+//    [app userLogin:^(resultType type) {
+//        [selfVc handleResultType:type];
+//    }];
 }
 
 

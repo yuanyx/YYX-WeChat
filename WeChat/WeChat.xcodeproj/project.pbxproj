@@ -24,6 +24,7 @@
 		595308F71C102DAC00057FCE /* YYUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 595308F61C102DAC00057FCE /* YYUserInfo.m */; };
 		595308FA1C104D4B00057FCE /* YYBaseLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595308F91C104D4A00057FCE /* YYBaseLoginViewController.m */; };
 		595308FD1C10551C00057FCE /* YYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595308FC1C10551C00057FCE /* YYRegisterViewController.m */; };
+		59C32A681C118627005271A1 /* YYProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C32A671C118627005271A1 /* YYProfileViewController.m */; };
 		59CAA4291C0EDC6C005CE6C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA4281C0EDC6C005CE6C4 /* main.m */; };
 		59CAA42C1C0EDC6C005CE6C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA42B1C0EDC6C005CE6C4 /* AppDelegate.m */; };
 		59CAA42F1C0EDC6C005CE6C4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA42E1C0EDC6C005CE6C4 /* ViewController.m */; };
@@ -162,6 +163,7 @@
 		59CAA62A1C0EDE5B005CE6C4 /* XMPPMessage+XEP_0308.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA5CD1C0EDE5B005CE6C4 /* XMPPMessage+XEP_0308.m */; };
 		59CAA62B1C0EDE5B005CE6C4 /* XMPPMessage+XEP_0333.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA5D01C0EDE5B005CE6C4 /* XMPPMessage+XEP_0333.m */; };
 		59CAA62C1C0EDE5B005CE6C4 /* NSXMLElement+XEP_0335.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA5D31C0EDE5B005CE6C4 /* NSXMLElement+XEP_0335.m */; };
+		59CFDC0A1C111A950096DA20 /* YYXMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CFDC091C111A950096DA20 /* YYXMPPTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +218,8 @@
 		595308F91C104D4A00057FCE /* YYBaseLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYBaseLoginViewController.m; sourceTree = "<group>"; };
 		595308FB1C10551B00057FCE /* YYRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYRegisterViewController.h; sourceTree = "<group>"; };
 		595308FC1C10551C00057FCE /* YYRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYRegisterViewController.m; sourceTree = "<group>"; };
+		59C32A661C118627005271A1 /* YYProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYProfileViewController.h; sourceTree = "<group>"; };
+		59C32A671C118627005271A1 /* YYProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYProfileViewController.m; sourceTree = "<group>"; };
 		59CAA4241C0EDC6C005CE6C4 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59CAA4281C0EDC6C005CE6C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		59CAA42A1C0EDC6C005CE6C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
@@ -500,6 +504,8 @@
 		59CAA5D31C0EDE5B005CE6C4 /* NSXMLElement+XEP_0335.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLElement+XEP_0335.m"; sourceTree = "<group>"; };
 		59CAA62D1C0EDEA8005CE6C4 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		59CAA62E1C0EDF13005CE6C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		59CFDC081C111A950096DA20 /* YYXMPPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXMPPTool.h; sourceTree = "<group>"; };
+		59CFDC091C111A950096DA20 /* YYXMPPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXMPPTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,6 +633,8 @@
 			children = (
 				595308ED1C101ECD00057FCE /* YYMeViewController.h */,
 				595308EE1C101ECD00057FCE /* YYMeViewController.m */,
+				59C32A661C118627005271A1 /* YYProfileViewController.h */,
+				59C32A671C118627005271A1 /* YYProfileViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -637,6 +645,8 @@
 				595308F41C102D3A00057FCE /* Singleton.h */,
 				595308F51C102DAC00057FCE /* YYUserInfo.h */,
 				595308F61C102DAC00057FCE /* YYUserInfo.m */,
+				59CFDC081C111A950096DA20 /* YYXMPPTool.h */,
+				59CFDC091C111A950096DA20 /* YYXMPPTool.m */,
 			);
 			name = Singleton;
 			sourceTree = "<group>";
@@ -1659,6 +1669,7 @@
 				59CAA5F51C0EDE5B005CE6C4 /* XMPPMUC.m in Sources */,
 				59CAA5FC1C0EDE5B005CE6C4 /* XMPPvCardTemp.m in Sources */,
 				59CAA5FD1C0EDE5B005CE6C4 /* XMPPvCardTempAdr.m in Sources */,
+				59CFDC0A1C111A950096DA20 /* YYXMPPTool.m in Sources */,
 				59CAA6091C0EDE5B005CE6C4 /* XMPPIQ+XEP_0066.m in Sources */,
 				59CAA4841C0EDD24005CE6C4 /* GCDAsyncSocket.m in Sources */,
 				59CAA5FF1C0EDE5B005CE6C4 /* XMPPvCardTempBase.m in Sources */,
@@ -1682,6 +1693,7 @@
 				59CAA6151C0EDE5B005CE6C4 /* XMPPCapabilities.m in Sources */,
 				59CAA5EB1C0EDE5B005CE6C4 /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				59CAA5E91C0EDE5B005CE6C4 /* XMPPRoom.xcdatamodeld in Sources */,
+				59C32A681C118627005271A1 /* YYProfileViewController.m in Sources */,
 				59CAA5EC1C0EDE5B005CE6C4 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
 				59CAA5F81C0EDE5B005CE6C4 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				59CAA4E31C0EDE04005CE6C4 /* XMPPParser.m in Sources */,

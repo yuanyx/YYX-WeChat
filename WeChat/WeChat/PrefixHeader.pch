@@ -15,6 +15,7 @@
 #import "CategoryWF.h"
 #import "MBProgressHUD+HM.h"
 #import "YYUserInfo.h"
+#import "YYXMPPTool.h"
 
 
 //自定义Log
