@@ -97,7 +97,8 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    self.iconImageView.image = info[UIImagePickerControllerEditedImage];
+   // NSLog(@"%@", info);
+    self.iconImageView.image = info[UIImagePickerControllerOriginalImage];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
