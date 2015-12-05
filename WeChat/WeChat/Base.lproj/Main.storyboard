@@ -121,7 +121,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTx-q5-3kV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1494" y="-2191"/>
+            <point key="canvasLocation" x="-2188" y="-2681"/>
         </scene>
         <!--我-->
         <scene sceneID="KfS-zN-eES">
@@ -203,12 +203,64 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8f-eW-Ljo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2030" y="-1614"/>
+            <point key="canvasLocation" x="-1914" y="-1598"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--编辑电子名片-->
+        <scene sceneID="fI8-d2-TKb">
+            <objects>
+                <tableViewController hidesBottomBarWhenPushed="YES" id="chf-uJ-WWu" userLabel="编辑电子名片" customClass="YYEditVCardViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ozf-G2-m3C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="uFG-2n-Lbb">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="c4J-uL-O0R">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c4J-uL-O0R" id="5G4-E2-30S">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ebK-6q-aVD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="ebK-6q-aVD" firstAttribute="leading" secondItem="5G4-E2-30S" secondAttribute="leading" id="RSa-Ib-81f"/>
+                                                <constraint firstAttribute="trailing" secondItem="ebK-6q-aVD" secondAttribute="trailing" id="cmJ-f8-UUk"/>
+                                                <constraint firstAttribute="bottom" secondItem="ebK-6q-aVD" secondAttribute="bottom" id="pDQ-2C-TfU"/>
+                                                <constraint firstItem="ebK-6q-aVD" firstAttribute="top" secondItem="5G4-E2-30S" secondAttribute="top" id="vRh-7w-OEm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="chf-uJ-WWu" id="qTU-sb-0mM"/>
+                            <outlet property="delegate" destination="chf-uJ-WWu" id="SGP-v5-swm"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="editTextField" destination="ebK-6q-aVD" id="NKY-8O-3B0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIM-LB-wq3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1445" y="-2038"/>
+        </scene>
+        <!--个人信息-->
         <scene sceneID="CNd-2H-lYe">
             <objects>
-                <tableViewController id="Ltj-8y-COb" customClass="YYProfileViewController" sceneMemberID="viewController">
+                <tableViewController title="个人信息" hidesBottomBarWhenPushed="YES" id="Ltj-8y-COb" customClass="YYProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vBg-6H-Xup">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -460,11 +512,12 @@
                         <outlet property="iconImageView" destination="Zfc-fb-jsq" id="AeV-1S-2wJ"/>
                         <outlet property="nickNameLabel" destination="2SF-cX-s38" id="ysv-94-azI"/>
                         <outlet property="weChatNumberLabel" destination="jHj-K8-e4L" id="RaI-JH-XRJ"/>
+                        <segue destination="chf-uJ-WWu" kind="show" identifier="EditVCardSegue" id="5n3-oK-Uy7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGE-Ar-E9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1864" y="-1806"/>
+            <point key="canvasLocation" x="-1966" y="-2056"/>
         </scene>
         <!-- 我-->
         <scene sceneID="4zc-s8-0ze">
@@ -500,7 +553,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sse-It-wm1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2456" y="-1768"/>
+            <point key="canvasLocation" x="-2640" y="-1564"/>
         </scene>
         <!--通讯录-->
         <scene sceneID="cO9-RQ-1SH">

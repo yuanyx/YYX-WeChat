@@ -8,8 +8,9 @@
 
 #import "YYProfileViewController.h"
 #import "XMPPvCardTemp.h"
+#import "YYEditVCardViewController.h"
 
-@interface YYProfileViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface YYProfileViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, YYEditVCardViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;//头像
 @property (weak, nonatomic) IBOutlet UILabel *weChatNumberLabel;//微信号
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;//昵称
@@ -71,35 +72,84 @@
     }
     
     if (tag == 0) { //选择图片
-        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"请选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"相册", nil];
-        [sheet showInView:self.view];
+        [self imagePicker];
     }else { //跳到下一个界面
         YYLog(@"跳到下一个界面");
+        [self performSegueWithIdentifier:@"EditVCardSegue" sender:cell];
     }
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if (buttonIndex == 2) { //取消
-        return;
+    //获取编辑个人信息的控制器
+    id destVc = segue.destinationViewController;
+    if ([destVc isKindOfClass:[YYEditVCardViewController class]]) {
+        YYEditVCardViewController *editVc = destVc;
+        editVc.cell = sender;
+        editVc.delegate = self;
     }
-    
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    
-    if (buttonIndex == 0) { //拍照
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    } else { //相册
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    [self presentViewController:picker animated:YES completion:nil];
 }
 
+//UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"请选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"相册", nil];
+//[sheet showInView:self.view];
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex == 2) { //取消
+//        return;
+//    }
+//    
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    
+//    if (buttonIndex == 0) { //拍照
+//        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    } else { //相册
+//        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    }
+//    [self presentViewController:picker animated:YES completion:nil];
+//}
+
+#pragma mark -UIImagePickerController代理方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
    // NSLog(@"%@", info);
-    self.iconImageView.image = info[UIImagePickerControllerOriginalImage];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.iconImageView.image = image;
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    //更新到服务器
+    [self editVCardViewControllerDidSave];
 }
 
+- (void)imagePicker
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"请选择" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:picker animated:YES completion:nil];
+    }]];
+    
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker animated:YES completion:nil];
+    }]];
+    
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertControl animated:YES completion:nil];
+}
+
+#pragma mark -YYEditVCardViewController代理方法
+- (void)editVCardViewControllerDidSave
+{
+    //更新到服务器
+    XMPPvCardTemp *vCard = [YYXMPPTool sharedYYXMPPTool].vCard.myvCardTemp;
+    vCard.nickname = self.nickNameLabel.text;
+    
+    vCard.photo = UIImagePNGRepresentation(self.iconImageView.image);
+    
+    //方法内部实现数据上传到服务器
+    [[YYXMPPTool sharedYYXMPPTool].vCard updateMyvCardTemp:vCard];
+}
 @end

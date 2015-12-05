@@ -24,6 +24,7 @@
 		595308F71C102DAC00057FCE /* YYUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 595308F61C102DAC00057FCE /* YYUserInfo.m */; };
 		595308FA1C104D4B00057FCE /* YYBaseLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595308F91C104D4A00057FCE /* YYBaseLoginViewController.m */; };
 		595308FD1C10551C00057FCE /* YYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595308FC1C10551C00057FCE /* YYRegisterViewController.m */; };
+		59BCFCC21C12E38A00B3437D /* YYEditVCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BCFCC11C12E38A00B3437D /* YYEditVCardViewController.m */; };
 		59C32A681C118627005271A1 /* YYProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C32A671C118627005271A1 /* YYProfileViewController.m */; };
 		59CAA4291C0EDC6C005CE6C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA4281C0EDC6C005CE6C4 /* main.m */; };
 		59CAA42C1C0EDC6C005CE6C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CAA42B1C0EDC6C005CE6C4 /* AppDelegate.m */; };
@@ -218,6 +219,8 @@
 		595308F91C104D4A00057FCE /* YYBaseLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYBaseLoginViewController.m; sourceTree = "<group>"; };
 		595308FB1C10551B00057FCE /* YYRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYRegisterViewController.h; sourceTree = "<group>"; };
 		595308FC1C10551C00057FCE /* YYRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYRegisterViewController.m; sourceTree = "<group>"; };
+		59BCFCC01C12E38A00B3437D /* YYEditVCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYEditVCardViewController.h; sourceTree = "<group>"; };
+		59BCFCC11C12E38A00B3437D /* YYEditVCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYEditVCardViewController.m; sourceTree = "<group>"; };
 		59C32A661C118627005271A1 /* YYProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYProfileViewController.h; sourceTree = "<group>"; };
 		59C32A671C118627005271A1 /* YYProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYProfileViewController.m; sourceTree = "<group>"; };
 		59CAA4241C0EDC6C005CE6C4 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -635,6 +638,8 @@
 				595308EE1C101ECD00057FCE /* YYMeViewController.m */,
 				59C32A661C118627005271A1 /* YYProfileViewController.h */,
 				59C32A671C118627005271A1 /* YYProfileViewController.m */,
+				59BCFCC01C12E38A00B3437D /* YYEditVCardViewController.h */,
+				59BCFCC11C12E38A00B3437D /* YYEditVCardViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1582,6 +1587,7 @@
 		59CAA41C1C0EDC6C005CE6C4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YY;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "袁艳祥";
 				TargetAttributes = {
@@ -1782,6 +1788,7 @@
 				59CAA6211C0EDE5B005CE6C4 /* XMPPAutoPing.m in Sources */,
 				59CAA6121C0EDE5B005CE6C4 /* XMPPCapabilitiesCoreDataStorage.m in Sources */,
 				59CAA4881C0EDD24005CE6C4 /* DDLog.m in Sources */,
+				59BCFCC21C12E38A00B3437D /* YYEditVCardViewController.m in Sources */,
 				59CAA6061C0EDE5B005CE6C4 /* XMPPIQ+XEP_0060.m in Sources */,
 				595308FD1C10551C00057FCE /* YYRegisterViewController.m in Sources */,
 				59CAA5ED1C0EDE5B005CE6C4 /* XMPPRoomHybrid.xcdatamodeld in Sources */,
