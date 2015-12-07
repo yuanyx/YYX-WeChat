@@ -11,6 +11,7 @@
 #define LoginStatusKey @"loginStatus"
 #define PasswordKey @"pwd"
 
+
 @implementation YYUserInfo
 
 singleton_implementation(YYUserInfo)
@@ -28,5 +29,10 @@ singleton_implementation(YYUserInfo)
     self.user = [[NSUserDefaults standardUserDefaults] objectForKey:UserKey];
     self.loginStatus = [[NSUserDefaults standardUserDefaults] boolForKey:LoginStatusKey];
     self.pwd = [[NSUserDefaults standardUserDefaults] objectForKey:PasswordKey];
+}
+
+- (NSString *)jid
+{
+    return [NSString stringWithFormat:@"%@@%@", self.user, domain];
 }
 @end

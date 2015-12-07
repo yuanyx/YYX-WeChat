@@ -14,6 +14,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;//头像
 @property (weak, nonatomic) IBOutlet UILabel *weChatNumberLabel;//微信号
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;//昵称
+@property (weak, nonatomic) IBOutlet UILabel *orgnameLabel;//公司
+@property (weak, nonatomic) IBOutlet UILabel *orgunitLabel;//部门
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;//职位
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;//电话
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;//邮件
+
 
 @end
 
@@ -34,6 +40,29 @@
     
     //设置账号
     self.weChatNumberLabel.text = [YYUserInfo sharedYYUserInfo].user;
+    
+    // 公司
+    self.orgnameLabel.text = myVCard.orgName;
+    
+    // 部门
+    if (myVCard.orgUnits.count > 0) {
+        self.orgunitLabel.text = myVCard.orgUnits[0];
+        
+    }
+    
+    //职位
+    self.titleLabel.text = myVCard.title;
+    
+    //电话
+#warning myVCard.telecomsAddresses 这个get方法，没有对电子名片的xml数据进行解析
+    // 使用note字段充当电话
+    self.phoneLabel.text = myVCard.note;
+    //NSLog(@"note%@", myVCard.note);
+    
+    //邮件
+    // 用mailer充当邮件
+    self.emailLabel.text = myVCard.mailer;
+    //NSLog(@"mailer%@",  myVCard.mailer);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -145,9 +174,31 @@
 {
     //更新到服务器
     XMPPvCardTemp *vCard = [YYXMPPTool sharedYYXMPPTool].vCard.myvCardTemp;
+    //昵称
     vCard.nickname = self.nickNameLabel.text;
     
+    //头像
     vCard.photo = UIImagePNGRepresentation(self.iconImageView.image);
+    
+    // 公司
+    vCard.orgName = self.orgnameLabel.text;
+    
+    // 部门
+    if (self.orgunitLabel.text.length > 0) {
+        vCard.orgUnits = @[self.orgunitLabel.text];
+    }
+    
+    
+    // 职位
+    vCard.title = self.titleLabel.text;
+    
+    
+    // 电话
+    vCard.note =  self.phoneLabel.text;
+    
+    // 邮件
+    vCard.mailer = self.emailLabel.text;
+
     
     //方法内部实现数据上传到服务器
     [[YYXMPPTool sharedYYXMPPTool].vCard updateMyvCardTemp:vCard];

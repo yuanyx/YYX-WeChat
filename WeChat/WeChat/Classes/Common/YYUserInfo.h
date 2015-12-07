@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Singleton.h"
+static NSString *domain = @"yuan.local";
 
 @interface YYUserInfo : NSObject
 
@@ -24,6 +25,8 @@ singleton_interface(YYUserInfo)
 @property (nonatomic, copy) NSString *registerUser;
 /**注册密码*/
 @property (nonatomic, copy) NSString *registerPwd;
+
+@property (nonatomic, copy) NSString *jid;
 
 /**保存数据到沙盒中*/
 - (void)saveUserInfoToSanbox;

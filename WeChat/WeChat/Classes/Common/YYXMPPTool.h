@@ -26,7 +26,11 @@ singleton_interface(YYXMPPTool)
 
 /**注册标识 YES表示注册 NO表示登录*/
 @property (nonatomic, assign, getter=isRegisterOperation) BOOL registerOperation;
+
+@property (nonatomic, strong) XMPPStream *xmppStream;
 @property (nonatomic, strong) XMPPvCardTempModule *vCard; //电子名片;
+@property (nonatomic, strong) XMPPRosterCoreDataStorage *rosterStorage; //花名册数据存储
+@property (nonatomic, strong) XMPPRoster *roster; //花名册模块
 
 /** 用户登录*/
 - (void)userLogin:(resultBlock)rblock;

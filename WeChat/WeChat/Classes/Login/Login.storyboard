@@ -21,7 +21,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJ4-zy-GhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1626" y="-185"/>
+            <point key="canvasLocation" x="-1584" y="-133"/>
         </scene>
         <!--登录-->
         <scene sceneID="Igp-JF-q5G">
@@ -97,7 +97,7 @@
                                             <constraint firstAttribute="height" constant="35" id="8kU-fu-hoV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <animations/>
@@ -216,7 +216,7 @@
                                             <constraint firstAttribute="height" constant="40" id="dFc-xw-zLT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <animations/>
@@ -261,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oSb-X0-sAA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-369" y="625"/>
+            <point key="canvasLocation" x="-400" y="550"/>
         </scene>
         <!--注册界面导航-->
         <scene sceneID="HMr-US-b2E">

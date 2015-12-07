@@ -88,8 +88,9 @@
     [self dismissViewControllerAnimated:NO completion:nil];
     
     //登录成功跳到主界面
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.view.window.rootViewController = mainStoryboard.instantiateInitialViewController;
+    [UIStoryboard showInitialVCWithName:@"Main"];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    self.view.window.rootViewController = mainStoryboard.instantiateInitialViewController; //iOS7不支持
 }
 
 

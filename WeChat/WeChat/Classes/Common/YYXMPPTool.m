@@ -19,12 +19,17 @@
 
 @interface YYXMPPTool ()<XMPPStreamDelegate>
 {
-    XMPPStream *_xmppStream;
+    //XMPPStream *_xmppStream;
     resultBlock _rblock;
     
    // XMPPvCardTempModule *_vCard; //电子名片
     XMPPvCardCoreDataStorage *_vCardStorage; //电子名片存储
     XMPPvCardAvatarModule *_avatar; //头像模块
+    XMPPReconnect *_reconnect; //自动连接模块
+    //XMPPRoster *_roster; //花名册模块
+    //XMPPRosterCoreDataStorage *_rosterStorage; //花名册数据存储
+    XMPPMessageArchiving *_messageArchiving; //聊天模块
+    XMPPMessageArchivingCoreDataStorage *_msgArchivingStorage;//聊天消息存储
 }
 //1. 初始化XMPPStream
 - (void)setupXMPPStream;
@@ -50,6 +55,10 @@ singleton_implementation(YYXMPPTool)
     _xmppStream = [[XMPPStream alloc] init];
     
     //每一个模块添加后都需要激活
+    //添加自动连接模块
+    _reconnect = [[XMPPReconnect alloc] init];
+    [_reconnect activate:_xmppStream];
+    
     //添加电子名片模块获取个人信息
     _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
     _vCard = [[XMPPvCardTempModule alloc] initWithvCardStorage:_vCardStorage];
@@ -60,8 +69,41 @@ singleton_implementation(YYXMPPTool)
    _avatar = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:_vCard];
     //激活头像模块
     [_avatar activate:_xmppStream];
+    //添加花名册模块（获取好友列表）
+    _rosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
+    _roster = [[XMPPRoster alloc] initWithRosterStorage:_rosterStorage];
+    [_roster activate:_xmppStream];
+    //添加消息（聊天）模块
+    _msgArchivingStorage = [[XMPPMessageArchivingCoreDataStorage alloc] init];
+    _messageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_msgArchivingStorage];
+    [_messageArchiving activate:_xmppStream];
     
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+}
+
+//释放XMPP
+- (void)teardownXMPP
+{
+    //移除代理
+    [_xmppStream removeDelegate:self];
+    //停止模块
+    [_vCard deactivate];
+    [_avatar deactivate];
+    [_reconnect deactivate];
+    [_roster deactivate];
+    [_messageArchiving deactivate];
+    //断开连接
+    [_xmppStream disconnect];
+    //清空资源
+    _xmppStream = nil;
+    _vCard = nil;
+    _vCardStorage = nil;
+    _avatar = nil;
+    _reconnect = nil;
+    _roster = nil;
+    _rosterStorage = nil;
+    _messageArchiving = nil;
+    _msgArchivingStorage = nil;
 }
 
 #pragma mark -连接到服务器
@@ -234,6 +276,11 @@ singleton_implementation(YYXMPPTool)
     
     //连接主机成功发送注册密码
     [self connectToHost];
+}
+
+- (void)dealloc
+{
+    [self teardownXMPP]; //释放XMPP
 }
 
 @end
