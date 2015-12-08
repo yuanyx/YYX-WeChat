@@ -11,12 +11,21 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9H-ge-gnl">
+                    <rect key="frame" x="550" y="0.0" width="50" height="50"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="EYf-ON-W17"/>
+                        <constraint firstAttribute="height" constant="50" id="UQZ-9L-7JW"/>
+                    </constraints>
+                    <state key="normal" image="TypeSelectorBtn_Black"/>
+                </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="skq-4r-b6V">
                     <rect key="frame" x="50" y="9" width="450" height="32"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
                 </textView>
             </subviews>
             <animations/>
@@ -26,10 +35,19 @@
                 <constraint firstAttribute="trailing" secondItem="skq-4r-b6V" secondAttribute="trailing" constant="100" id="A8T-zh-3cX"/>
                 <constraint firstItem="skq-4r-b6V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="EhZ-tN-qBh"/>
                 <constraint firstItem="skq-4r-b6V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="dXo-Eg-5Fq"/>
+                <constraint firstItem="N9H-ge-gnl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ffB-KP-Srl"/>
+                <constraint firstAttribute="trailing" secondItem="N9H-ge-gnl" secondAttribute="trailing" id="hs1-xn-b54"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addBtn" destination="N9H-ge-gnl" id="XmG-Do-SPa"/>
+                <outlet property="msgTextView" destination="skq-4r-b6V" id="BRR-0w-1QA"/>
+            </connections>
             <point key="canvasLocation" x="381" y="284"/>
         </view>
     </objects>
+    <resources>
+        <image name="TypeSelectorBtn_Black" width="35" height="35"/>
+    </resources>
 </document>

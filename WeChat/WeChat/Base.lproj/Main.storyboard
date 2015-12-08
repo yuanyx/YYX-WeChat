@@ -30,7 +30,7 @@
         <!--微信-->
         <scene sceneID="KpB-Ak-bwB">
             <objects>
-                <tableViewController title="微信" id="NTm-kz-rxp" sceneMemberID="viewController">
+                <tableViewController title="微信" id="NTm-kz-rxp" customClass="YYHistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vBb-HR-h2F">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,11 +53,30 @@
                             <outlet property="delegate" destination="NTm-kz-rxp" id="Ge6-e9-n91"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="微信" id="oOk-vO-Kls"/>
+                    <navigationItem key="navigationItem" title="微信" id="oOk-vO-Kls">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Xez-Xi-Hc6">
+                            <view key="customView" contentMode="scaleToFill" id="wiB-Vr-rh4">
+                                <rect key="frame" x="20" y="5" width="133" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WV1-nQ-ZAh">
+                                        <rect key="frame" x="0.0" y="7" width="20" height="20"/>
+                                        <animations/>
+                                        <color key="color" red="0.25290652190000001" green="0.44920346259999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="indicator" destination="WV1-nQ-ZAh" id="fyC-4U-u6a"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I12-U0-06E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2632" y="-4052"/>
+            <point key="canvasLocation" x="-2259" y="-4052"/>
         </scene>
         <!--添加好友-->
         <scene sceneID="7nR-Hn-Fah">
@@ -109,7 +128,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lg7-Va-5zF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1942" y="-4052"/>
+            <point key="canvasLocation" x="-1923" y="-4052"/>
         </scene>
         <!--通讯录-->
         <scene sceneID="qGT-9U-w3g">

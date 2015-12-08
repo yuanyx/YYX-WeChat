@@ -7,6 +7,7 @@
 //
 
 #import "YYXMPPTool.h"
+NSString *const YYLoginStatusChangeNotification = @"YYLoginStatusNotification";
 
 /*
  * 在AppDelegate实现登录
@@ -29,7 +30,7 @@
     //XMPPRoster *_roster; //花名册模块
     //XMPPRosterCoreDataStorage *_rosterStorage; //花名册数据存储
     XMPPMessageArchiving *_messageArchiving; //聊天模块
-    XMPPMessageArchivingCoreDataStorage *_msgArchivingStorage;//聊天消息存储
+    //XMPPMessageArchivingCoreDataStorage *_msgArchivingStorage;//聊天消息存储
 }
 //1. 初始化XMPPStream
 - (void)setupXMPPStream;
@@ -114,6 +115,9 @@ singleton_implementation(YYXMPPTool)
         [self setupXMPPStream];
     }
     
+    //发送登录状态通知
+    [self postNotification:resultTypeConnecting];
+    
     //设置JID
     //resource标识用户登录的客户端 iphone
     
@@ -162,6 +166,12 @@ singleton_implementation(YYXMPPTool)
     [_xmppStream sendElement:presence];
 }
 
+#pragma mark -通知YYHistoryViewController登录状态
+- (void)postNotification:(resultType)type
+{
+    NSDictionary *userInfo = @{@"loginStatus":@(type)};
+    [[NSNotificationCenter defaultCenter] postNotificationName:YYLoginStatusChangeNotification object:nil userInfo:userInfo];
+}
 
 #pragma mark -XMPPStream的代理方法
 #pragma mark -与主机连接成功
@@ -189,6 +199,10 @@ singleton_implementation(YYXMPPTool)
     if (error && _rblock) {
         _rblock(resultTypeNetErr);
     }
+    
+    if (error) { //通知网络不好
+        [self postNotification:resultTypeNetErr];
+    }
     YYLog(@"与主机连接断开连接 %@", error);
 }
 
@@ -202,6 +216,8 @@ singleton_implementation(YYXMPPTool)
     if (_rblock) {
         _rblock(resultTypeLoginSuccess);
     }
+    
+    [self postNotification:resultTypeLoginSuccess];
 }
 
 #pragma mark -授权失败
@@ -212,6 +228,8 @@ singleton_implementation(YYXMPPTool)
     if (_rblock) {
         _rblock(resultTypeLoginFailure);
     }
+    
+    [self postNotification:resultTypeLoginFailure];
 }
 
 #pragma mark -注册成功

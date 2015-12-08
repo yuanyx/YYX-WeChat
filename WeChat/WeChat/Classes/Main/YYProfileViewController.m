@@ -56,13 +56,20 @@
     //电话
 #warning myVCard.telecomsAddresses 这个get方法，没有对电子名片的xml数据进行解析
     // 使用note字段充当电话
-    self.phoneLabel.text = myVCard.note;
+    //self.phoneLabel.text = myVCard.note;
     //NSLog(@"note%@", myVCard.note);
+    if (myVCard.telecomsAddresses.count > 0) {
+        self.phoneLabel.text = myVCard.telecomsAddresses[0];
+    }
     
     //邮件
     // 用mailer充当邮件
-    self.emailLabel.text = myVCard.mailer;
-    //NSLog(@"mailer%@",  myVCard.mailer);
+   // self.emailLabel.text = myVCard.mailer;
+    //解析电子邮件
+    if (myVCard.emailAddresses.count > 0)
+    {
+        self.emailLabel.text = myVCard.emailAddresses[0];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -194,12 +201,17 @@
     
     
     // 电话
-    vCard.note =  self.phoneLabel.text;
+    //vCard.note =  self.phoneLabel.text;
+    if (self.phoneLabel.text.length > 0) {
+        vCard.telecomsAddresses = @[self.phoneLabel.text];
+    }
     
     // 邮件
-    vCard.mailer = self.emailLabel.text;
+    //vCard.mailer = self.emailLabel.text;
+    if (self.emailLabel.text.length > 0) {
+        vCard.emailAddresses = @[self.emailLabel.text];
+    }
 
-    
     //方法内部实现数据上传到服务器
     [[YYXMPPTool sharedYYXMPPTool].vCard updateMyvCardTemp:vCard];
 }

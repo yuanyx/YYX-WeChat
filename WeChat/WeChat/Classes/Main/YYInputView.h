@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface YYInputView : UIView
+@property (weak, nonatomic) IBOutlet UITextView *msgTextView;
+@property (weak, nonatomic) IBOutlet UIButton *addBtn;
 
 + (instancetype)inputView;
 @end

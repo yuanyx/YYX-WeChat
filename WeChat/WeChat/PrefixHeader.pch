@@ -16,6 +16,7 @@
 #import "MBProgressHUD+HM.h"
 #import "YYUserInfo.h"
 #import "YYXMPPTool.h"
+#import "UIView+Extension.h"
 
 
 //自定义Log

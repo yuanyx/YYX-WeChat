@@ -7,6 +7,7 @@
 //
 
 #import "YYContactsViewController.h"
+#import "YYChatViewController.h"
 
 @interface YYContactsViewController ()<NSFetchedResultsControllerDelegate>
 {
@@ -54,7 +55,7 @@
     //1.获取上下文（关联数据库XMPPRoster.sqlite）
     NSManagedObjectContext *context = [YYXMPPTool sharedYYXMPPTool].rosterStorage.mainThreadManagedObjectContext;
     //2.FetchRequest
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"XMPPUserCoreDataStorageObject"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"XMPPUserCoreDataStorageObject"];
     //3.设置过滤和排序
     NSString *jid = [YYUserInfo sharedYYUserInfo].jid;
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"streamBareJidStr = %@", jid];
@@ -125,7 +126,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //选中表格某行联系人后进入聊开界面
-    [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
+    XMPPUserCoreDataStorageObject *friend = _resultsControl.fetchedObjects[indexPath.row];
+    [self performSegueWithIdentifier:@"ChatSegue" sender:friend.jid];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    id destVc = segue.destinationViewController;
+    if ([destVc isKindOfClass:[YYChatViewController class]]) {
+        YYChatViewController *chatVc = destVc;
+        chatVc.fJid = sender;
+    }
 }
 #pragma mark -NSFetchedResultsController代理方法，当数据库内容发生改变时会调用
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller

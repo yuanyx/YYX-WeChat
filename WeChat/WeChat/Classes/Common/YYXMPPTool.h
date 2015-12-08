@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "Singleton.h"
 #import "XMPPFramework.h"
+extern NSString *const YYLoginStatusChangeNotification;
 
 typedef enum {
+    resultTypeConnecting, //连接中...
     resultTypeLoginSuccess, //登录成功
     resultTypeLoginFailure, //登录失败
     resultTypeNetErr, //网络不给力
@@ -27,10 +29,11 @@ singleton_interface(YYXMPPTool)
 /**注册标识 YES表示注册 NO表示登录*/
 @property (nonatomic, assign, getter=isRegisterOperation) BOOL registerOperation;
 
-@property (nonatomic, strong) XMPPStream *xmppStream;
-@property (nonatomic, strong) XMPPvCardTempModule *vCard; //电子名片;
-@property (nonatomic, strong) XMPPRosterCoreDataStorage *rosterStorage; //花名册数据存储
-@property (nonatomic, strong) XMPPRoster *roster; //花名册模块
+@property (nonatomic, strong, readonly) XMPPStream *xmppStream;
+@property (nonatomic, strong, readonly) XMPPvCardTempModule *vCard; //电子名片;
+@property (nonatomic, strong, readonly) XMPPRosterCoreDataStorage *rosterStorage; //花名册数据存储
+@property (nonatomic, strong, readonly) XMPPRoster *roster; //花名册模块
+@property (nonatomic, strong, readonly) XMPPMessageArchivingCoreDataStorage *msgArchivingStorage;//聊天消息存储
 
 /** 用户登录*/
 - (void)userLogin:(resultBlock)rblock;

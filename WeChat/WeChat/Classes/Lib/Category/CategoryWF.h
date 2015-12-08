@@ -8,7 +8,7 @@
 
 #ifndef WeiXin_CategoryWF_h
 #define WeiXin_CategoryWF_h
-#import "UIView+WF.h"
+#import "UIView+Extension.h"
 #import "UIButton+WF.h"
 #import "UIImage+WF.h"
 #import "UIStoryboard+WF.h"

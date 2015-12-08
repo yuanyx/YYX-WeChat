@@ -32,8 +32,11 @@
         self.window.rootViewController = mainStoryboard.instantiateInitialViewController;
     }
     
-    //自动登录服务器
-    [[YYXMPPTool sharedYYXMPPTool] userLogin:nil];
+    //1s后自动登录服务器
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[YYXMPPTool sharedYYXMPPTool] userLogin:nil];
+    });
+    
     return YES;
 }
 
