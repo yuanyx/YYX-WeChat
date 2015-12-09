@@ -37,6 +37,11 @@
         [[YYXMPPTool sharedYYXMPPTool] userLogin:nil];
     });
     
+    //注册应用接收通知
+    if ([[UIDevice currentDevice].systemVersion doubleValue] > 8.0) {
+        UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [application registerUserNotificationSettings:setting];
+    }
     return YES;
 }
 

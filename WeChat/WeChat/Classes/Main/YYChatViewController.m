@@ -231,21 +231,24 @@
     if ([bodyType isEqualToString:@"image"]) {
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:message.body] placeholderImage:[UIImage imageNamed:@"DefaultProfileHead"]];
         cell.textLabel.text = nil;
-    } else if ([bodyType isEqualToString:@"text"]) {
-       if ([message.outgoing boolValue]) { //自己发的消息
-          cell.textLabel.text = [NSString stringWithFormat:@"Me: %@", message.body];
-        }else { //对方发的消息
-          cell.textLabel.text = [NSString stringWithFormat:@"Other: %@", message.body];
-        }
+        return cell;
+    }
+//    else if ([bodyType isEqualToString:@"text"]) {
+//       if ([message.outgoing boolValue]) { //自己发的消息
+//          cell.textLabel.text = [NSString stringWithFormat:@"Me: %@", message.body];
+//        }else { //对方发的消息
+//          cell.textLabel.text = [NSString stringWithFormat:@"Other: %@", message.body];
+//        }
+//        cell.imageView.image = nil;
+//    }
+    
+    if ([message.outgoing boolValue]) { //自己发的消息
+        cell.textLabel.text = [NSString stringWithFormat:@"Me: %@", message.body];
+        cell.imageView.image = nil;
+    }else { //对方发的消息
+        cell.textLabel.text = [NSString stringWithFormat:@"Other: %@", message.body];
         cell.imageView.image = nil;
     }
-    
-    
-//    if ([message.outgoing boolValue]) { //自己发的消息
-//        cell.textLabel.text = [NSString stringWithFormat:@"Me: %@", message.body];
-//    }else { //对方发的消息
-//        cell.textLabel.text = [NSString stringWithFormat:@"Other: %@", message.body];
-//    }
     
     return cell;
 }
@@ -286,7 +289,10 @@
 {
     XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:self.fJid];//type:chat代表个人聊天（私聊）
     //bodyType为text:纯文本 image:图片
-    [message addAttributeWithName:@"bodyType" stringValue:bodyType];
+    if ([bodyType isEqualToString:@"image"]) {
+        [message addAttributeWithName:@"bodyType" stringValue:bodyType];
+    }
+    //[message addAttributeWithName:@"bodyType" stringValue:bodyType];
     //设置消息内容
     [message addBody:text];
     [[YYXMPPTool sharedYYXMPPTool].xmppStream sendElement:message];

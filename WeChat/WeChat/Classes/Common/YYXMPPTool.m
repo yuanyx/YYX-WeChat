@@ -79,6 +79,7 @@ singleton_implementation(YYXMPPTool)
     _messageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_msgArchivingStorage];
     [_messageArchiving activate:_xmppStream];
     
+    _xmppStream.enableBackgroundingOnSocket = YES; //iOS7以前本地通知必须设置
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
 }
 
@@ -247,6 +248,25 @@ singleton_implementation(YYXMPPTool)
     YYLog(@"注册失败 %@", error);
     if (_rblock) {
         _rblock(resultTypeRegisterFailure);
+    }
+}
+
+#pragma mark -接收到好友消息
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
+{
+    //YYLog(@"%@", message);
+    //如果不在前台，发送本地通知
+    if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
+        //开启本地通知
+        UILocalNotification *localNoti = [[UILocalNotification alloc] init];
+        //设置内容
+        localNoti.alertBody = [NSString stringWithFormat:@"%@\n%@", message.fromStr, message.body];
+        //设置执行时间
+        localNoti.fireDate = [NSDate date];
+        //设置音效
+        localNoti.soundName = @"default";
+        //执行本地通知
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNoti];
     }
 }
 
