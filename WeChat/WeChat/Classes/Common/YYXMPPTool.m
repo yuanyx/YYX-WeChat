@@ -7,6 +7,8 @@
 //
 
 #import "YYXMPPTool.h"
+
+#define LogDomain  @"yuan.local"
 NSString *const YYLoginStatusChangeNotification = @"YYLoginStatusNotification";
 
 /*
@@ -130,11 +132,11 @@ singleton_implementation(YYXMPPTool)
         user = [YYUserInfo sharedYYUserInfo].user;
     }
     
-    XMPPJID *myJID = [XMPPJID jidWithUser:user domain:@"yuan.local" resource:@"iPhone"];
+    XMPPJID *myJID = [XMPPJID jidWithUser:user domain:LogDomain resource:@"iPhone"];
     _xmppStream.myJID = myJID;
     
     //设置服务器域名
-    _xmppStream.hostName = @"yuan.local";//还可以是IP地址
+    _xmppStream.hostName = LogDomain;//@"yuan.local";//还可以是IP地址
     
     //设置端口
     _xmppStream.hostPort = 5222;
