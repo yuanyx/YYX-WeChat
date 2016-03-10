@@ -68,6 +68,7 @@ singleton_implementation(YYXMPPTool)
     //激活电子名片模块
     [_vCard activate:_xmppStream];
     
+    
     //添加头像模块
    _avatar = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:_vCard];
     //激活头像模块
