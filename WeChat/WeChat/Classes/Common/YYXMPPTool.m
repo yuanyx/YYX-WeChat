@@ -72,10 +72,12 @@ singleton_implementation(YYXMPPTool)
    _avatar = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:_vCard];
     //激活头像模块
     [_avatar activate:_xmppStream];
+    
     //添加花名册模块（获取好友列表）
     _rosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
     _roster = [[XMPPRoster alloc] initWithRosterStorage:_rosterStorage];
     [_roster activate:_xmppStream];
+    
     //添加消息（聊天）模块
     _msgArchivingStorage = [[XMPPMessageArchivingCoreDataStorage alloc] init];
     _messageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_msgArchivingStorage];
